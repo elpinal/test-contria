@@ -1,3 +1,4 @@
+use std::io;
 use std::io::{Bytes, Read};
 use std::iter::Peekable;
 
@@ -14,5 +15,9 @@ impl<R: Sized + Read> Parser<R> {
         R: Read + Sized,
     {
         Parser { r: r.bytes().peekable() }
+    }
+
+    fn peek(&mut self) -> Option<&Result<u8, io::Error>> {
+        self.r.peek()
     }
 }
