@@ -1,10 +1,10 @@
-use std::io::Read;
+use std::io::{Bytes, Read};
 
 struct Parser<R>
 where
     R: Sized + Read,
 {
-    r: R,
+    r: Bytes<R>,
 }
 
 impl<R: Sized + Read> Parser<R> {
@@ -12,6 +12,6 @@ impl<R: Sized + Read> Parser<R> {
     where
         R: Read + Sized,
     {
-        Parser { r }
+        Parser { r: r.bytes() }
     }
 }
