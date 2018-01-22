@@ -25,7 +25,7 @@ impl<R: Sized + Read> Parser<R> {
         self.r.next()
     }
 
-    fn read(&mut self) {
+    fn read(&mut self) -> Result<u8, io::Error> {
         match self.peek() {
             Some(r) => {
                 match *r {
