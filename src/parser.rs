@@ -27,7 +27,12 @@ impl<R: Sized + Read> Parser<R> {
 
     fn read(&mut self) {
         match self.peek() {
-            Some(r) => (),
+            Some(r) => {
+                match *r {
+                    Ok() => (),
+                    Err() => (),
+                }
+            }
             None => (),
         }
     }
