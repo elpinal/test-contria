@@ -20,4 +20,8 @@ impl<R: Sized + Read> Parser<R> {
     fn peek(&mut self) -> Option<&Result<u8, io::Error>> {
         self.r.peek()
     }
+
+    fn next(&mut self) -> Option<Result<u8, io::Error>> {
+        self.r.next()
+    }
 }
