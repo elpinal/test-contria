@@ -29,6 +29,7 @@ impl<R: Sized + Read> Parser<R> {
         match self.peek() {
             Some(r) => {
                 match *r {
+                    Ok(b' ') => self.read(),
                     Ok(..) => (),
                     Err(..) => (),
                 }
