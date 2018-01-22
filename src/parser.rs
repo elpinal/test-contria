@@ -26,6 +26,7 @@ impl<R: Sized + Read> Parser<R> {
     }
 
     fn read(&mut self) -> Result<Option<u8>, io::Error> {
+        let mut f = |p: Parser| ();
         match self.peek() {
             Some(r) => {
                 match *r {
