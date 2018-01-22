@@ -37,6 +37,6 @@ impl<R: Sized + Read> Parser<R> {
             }
             None => Ok(None),
         }
-        f(self)
+        f(self);
     }
 }
