@@ -24,4 +24,11 @@ impl<R: Sized + Read> Parser<R> {
     fn next(&mut self) -> Option<Result<u8, io::Error>> {
         self.r.next()
     }
+
+    fn read(&mut self) {
+        match self.peek() {
+            Some(r) => (),
+            None => (),
+        }
+    }
 }
