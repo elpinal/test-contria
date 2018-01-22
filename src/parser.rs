@@ -31,7 +31,7 @@ impl<R: Sized + Read> Parser<R> {
                 match *r {
                     Ok(b' ') => self.read(),
                     Ok(..) => (),
-                    Err(..) => (),
+                    Err(..) => self.next(),
                 }
             }
             None => (),
