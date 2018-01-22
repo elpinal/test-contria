@@ -30,12 +30,13 @@ impl<R: Sized + Read> Parser<R> {
         match self.peek() {
             Some(r) => {
                 match *r {
-                    Ok(b' ') => self.read(),
+                    Ok(b' ') => f = |p| p.read(),
                     Ok(..) => (),
-                    Err(..) => self.next(),
+                    Err(..) => f = |p| p.next(),
                 }
             }
             None => Ok(None),
         }
+        f(self)
     }
 }
