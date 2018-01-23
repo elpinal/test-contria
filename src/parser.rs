@@ -31,7 +31,7 @@ impl<R: Sized + Read> Parser<R> {
     }
 
     fn read(&mut self) -> Result<Option<u8>, Error> {
-        let mut f = |p: Parser| ();
+        let mut f = |p: Parser| -> Result<Option<u8>, Error> Ok(None);
         match self.peek() {
             Some(r) => {
                 match *r {
