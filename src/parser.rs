@@ -30,13 +30,13 @@ impl<R: Sized + Read> Parser<R> {
         self.r.next()
     }
 
-    fn read(&mut self) -> Result<Option<u8>, io::Error> {
+    fn read(&mut self) -> Result<Option<u8>, Error> {
         let mut f = |p: Parser| ();
         match self.peek() {
             Some(r) => {
                 match *r {
                     Ok(b' ') => f = |p| p.read(),
-                    Ok(..) => (),
+                    Ok(..) => return Err(Error::Illegal),
                     Err(..) => f = |p| p.next(),
                 }
             }
