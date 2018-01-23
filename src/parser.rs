@@ -9,6 +9,11 @@ where
     r: Peekable<Bytes<R>>,
 }
 
+enum Error {
+    Io(io::Error),
+    Illegal,
+}
+
 impl<R: Sized + Read> Parser<R> {
     fn new(r: R) -> Parser<R>
     where
