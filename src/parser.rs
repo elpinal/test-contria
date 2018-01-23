@@ -47,6 +47,8 @@ impl<R: Sized + Read> Parser<R> {
             None => return Ok(None),
         }
         match x {
+            Read => self.read(),
+            Next => self.next(),
         }
     }
 }
