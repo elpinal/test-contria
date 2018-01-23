@@ -35,8 +35,8 @@ impl<R: Sized + Read> Parser<R> {
                     Err(..) => f = |p| p.next(),
                 }
             }
-            None => Ok(None),
+            None => return Ok(None),
         }
-        f(self);
+        f(self)
     }
 }
