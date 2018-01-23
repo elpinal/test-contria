@@ -46,7 +46,7 @@ impl<R: Sized + Read> Parser<R> {
             }
             None => return Ok(None),
         }
-        = match x {
+        match x {
             X::Read => {
                 match self.read() {
                     Ok(a) => Ok(a),
