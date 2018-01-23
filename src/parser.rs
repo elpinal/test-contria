@@ -53,7 +53,12 @@ impl<R: Sized + Read> Parser<R> {
                     Err(a) => Err(a),
                 }
             }
-            X::Next => self.next(),
+            X::Next => {
+                match self.next() {
+                    Ok(a) => Ok(a),
+                    Err(a) => Err(a),
+                }
+            }
         }
     }
 }
