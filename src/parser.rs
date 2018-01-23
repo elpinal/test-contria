@@ -39,16 +39,16 @@ impl<R: Sized + Read> Parser<R> {
         match self.peek() {
             Some(r) => {
                 match *r {
-                    Ok(b' ') => x = Read,
+                    Ok(b' ') => x = X::Read,
                     Ok(..) => return Err(Error::Illegal),
-                    Err(..) => x = Next,
+                    Err(..) => x = X::Next,
                 }
             }
             None => return Ok(None),
         }
         match x {
-            Read => self.read(),
-            Next => self.next(),
+            X::Read => self.read(),
+            X::Next => self.next(),
         }
     }
 }
