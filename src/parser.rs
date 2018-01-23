@@ -49,7 +49,7 @@ impl<R: Sized + Read> Parser<R> {
         match x {
             X::Read => {
                 match self.read() {
-                    Ok(a) => Ok(a),
+                    Some(Ok(a)) => Ok(Some(a)),
                     Err(a) => Err(a),
                 }
             }
